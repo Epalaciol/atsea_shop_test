@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2021-03-06T20:00:00.261Z",
-    "end": "2021-03-06T20:00:00.673Z",
-    "duration": 412,
+    "start": "2021-03-06T20:09:15.330Z",
+    "end": "2021-03-06T20:09:15.770Z",
+    "duration": 440,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "84d34b09-e49d-4ef0-bb67-70cbb138ac5e",
+      "uuid": "b0774cd3-083d-46ba-811f-d1fd5f139874",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "e2113bb0-d02a-4d66-9885-e59b0c7f3e2d",
+          "uuid": "9c79f944-3c0a-452a-989d-3bdbdd26143a",
           "title": "First Api Tests",
           "fullFile": "C:\\Users\\Esteban\\Desktop\\Personal\\Proyectos Personales\\PSL\\final_project\\atsea_shop_test\\dist\\test\\api\\myFirsAPItest.js",
           "file": "\\dist\\test\\api\\myFirsAPItest.js",
@@ -38,7 +38,7 @@
               "title": "Consume GET Service",
               "fullTitle": "First Api Tests Consume GET Service",
               "timedOut": false,
-              "duration": 401,
+              "duration": 429,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "__awaiter(void 0, void 0, void 0, function* () {\n        const response = yield superagent_1.get('https://httpbin.org/ip');\n        expect(response.status).to.equal(http_status_codes_1.StatusCodes.OK);\n        expect(response.body).to.have.property('origin');\n    })",
               "err": {},
-              "uuid": "d7db52a0-3afc-4855-a1af-9f188d9ee6bf",
-              "parentUUID": "e2113bb0-d02a-4d66-9885-e59b0c7f3e2d",
+              "uuid": "2a05db05-d5f6-4399-8851-0f0aece639d0",
+              "parentUUID": "9c79f944-3c0a-452a-989d-3bdbdd26143a",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "d7db52a0-3afc-4855-a1af-9f188d9ee6bf"
+            "2a05db05-d5f6-4399-8851-0f0aece639d0"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 401,
+          "duration": 429,
           "root": false,
           "rootEmpty": false,
           "_timeout": 5000
