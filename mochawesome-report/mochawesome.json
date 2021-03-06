@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-03-06T20:00:00.261Z",
+    "end": "2021-03-06T20:00:00.673Z",
+    "duration": 412,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "84d34b09-e49d-4ef0-bb67-70cbb138ac5e",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e2113bb0-d02a-4d66-9885-e59b0c7f3e2d",
+          "title": "First Api Tests",
+          "fullFile": "C:\\Users\\Esteban\\Desktop\\Personal\\Proyectos Personales\\PSL\\final_project\\atsea_shop_test\\dist\\test\\api\\myFirsAPItest.js",
+          "file": "\\dist\\test\\api\\myFirsAPItest.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Consume GET Service",
+              "fullTitle": "First Api Tests Consume GET Service",
+              "timedOut": false,
+              "duration": 401,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "__awaiter(void 0, void 0, void 0, function* () {\n        const response = yield superagent_1.get('https://httpbin.org/ip');\n        expect(response.status).to.equal(http_status_codes_1.StatusCodes.OK);\n        expect(response.body).to.have.property('origin');\n    })",
+              "err": {},
+              "uuid": "d7db52a0-3afc-4855-a1af-9f188d9ee6bf",
+              "parentUUID": "e2113bb0-d02a-4d66-9885-e59b0c7f3e2d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d7db52a0-3afc-4855-a1af-9f188d9ee6bf"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 401,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 5000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 5000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "8.3.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.2.0"
+    }
+  }
+}
