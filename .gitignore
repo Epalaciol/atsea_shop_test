@@ -152,8 +152,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-
-
 mochawesome-report
 dist
 
