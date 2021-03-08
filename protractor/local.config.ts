@@ -36,6 +36,7 @@ export const config: Config = {
   framework: "mocha",
   mochaOpts: {
     reporter: "mochawesome-screenshots",
+    timeout: 30000,
   },
   specs: ["../test/ui/**/*.js"],
   getPageTimeout: 30000,
