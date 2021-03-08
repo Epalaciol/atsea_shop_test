@@ -1,15 +1,34 @@
-import { $, ElementFinder } from "protractor";
+import {
+  $$,
+  ElementFinder,
+  ExpectedConditions,
+  browser,
+  ElementArrayFinder,
+} from "protractor";
 
-export class ProductPage {
-  private addButton: ElementFinder;
+export class ProductListPage {
+  private products: ElementArrayFinder;
 
   constructor() {
-    this.addButton = $(
-      "#block_top_menu .menu-content > li > a[title='T-shirts']"
-    );
+    this.products = $$(".productListWrapper");
+  }
+  private async findByProduct(product: string): Promise<ElementFinder> {
+    return this.products
+      .filter(async (item) => {
+        return await item
+          .$(".titleTitle")
+          .getText()
+          .then(async (txt: string) => await txt.includes(product));
+      })
+      .first();
   }
 
-  public async goToTShirtMenu(): Promise<void> {
-    await this.tShirtMenu.click();
+  public async selectProduct(item: string): Promise<void> {
+    const product: ElementFinder = (await this.findByProduct(item)).$(
+      ".titleAdd > button"
+    );
+    await browser.wait(ExpectedConditions.elementToBeClickable(product), 5000);
+
+    await product.click();
   }
 }
