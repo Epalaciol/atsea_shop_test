@@ -35,14 +35,20 @@ export const config: Config = {
   multiCapabilities,
   framework: "mocha",
   mochaOpts: {
+    timeout: 600000,
     reporter: "mochawesome-screenshots",
-    timeout: 120000,
+    reporterOptions: {
+      reportName: "report" + new Date().getTime(),
+      multiRepor: true,
+      clearOldScreenshots: false,
+    },
   },
   specs: ["../test/ui/**/*.js"],
   getPageTimeout: 30000,
   SELENIUM_PROMISE_MANAGER: false,
   seleniumAddress: "http://0.0.0.0:4444",
   onPrepare: () => {
+    browser.manage().timeouts().implicitlyWait(0);
     browser.ignoreSynchronization = true;
   },
 };

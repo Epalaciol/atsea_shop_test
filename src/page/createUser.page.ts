@@ -1,4 +1,4 @@
-import { $, ElementFinder } from "protractor";
+import { $, browser, ElementFinder } from "protractor";
 
 export class CreateUserPage {
   private username: ElementFinder;
@@ -16,10 +16,11 @@ export class CreateUserPage {
     await this.username.sendKeys(username.slice(1));
   }
   public async setPassword(password: string): Promise<void> {
-    await this.password.sendKeys(password[0]);
-    await this.password.sendKeys(password.slice(1));
+    await this.password.click();
+    await this.password.sendKeys(password);
   }
   public async signUp(): Promise<void> {
+    await browser.sleep(3000);
     await this.signupButton.click();
   }
 }

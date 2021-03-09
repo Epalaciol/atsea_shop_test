@@ -25,6 +25,7 @@ describe("Let's buy something", () => {
       const singInUser: SignInUserPage = new SignInUserPage();
       beforeEach(async () => {
         await menuContent.clickSignIn();
+        await browser.sleep(3000);
         await singInUser.setUsername("daniela");
         await singInUser.setPassword("12345");
         await singInUser.signUp();

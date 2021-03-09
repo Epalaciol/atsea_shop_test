@@ -12,8 +12,8 @@ export class SignInUserPage {
   }
 
   public async setUsername(username: string): Promise<void> {
-    await this.username.click();
-    await this.username.sendKeys(username);
+    await this.username.sendKeys(username[0]);
+    await this.username.sendKeys(username.slice(1));
   }
   public async setPassword(password: string): Promise<void> {
     await this.password.click();
