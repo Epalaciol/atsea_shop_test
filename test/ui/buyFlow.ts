@@ -15,7 +15,8 @@ describe("Let's buy something", () => {
       productList.selectProduct("Unusable Security");
     });
     it("im in the button", async () => {
-      expect(menuContent.getNumberItems()).to.equal("1");
+      await browser.sleep(10000);
+      expect(await menuContent.getNumberItems()).to.equal("1");
     });
   });
 });

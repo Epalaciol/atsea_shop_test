@@ -1,5 +1,3 @@
-# To execute this docker-compose yml file use `docker-compose -f docker-compose-v3.yml up -d`
-# To stop the execution `docker-compose -f docker-compose-v3.yml down`
 version: "3"
 services:
   chrome:
