@@ -13,7 +13,6 @@ export class ProductListPage {
     this.products = $$(".tile");
   }
   private async findByProduct(product: string): Promise<ElementFinder> {
-    console.log((await this.products).length);
     return this.products
       .filter(async (item) => {
         const resItem = await item
