@@ -31,7 +31,6 @@ export class ProductListPage {
   public async selectProduct(item: string): Promise<void> {
     const product: ElementFinder = await this.findByProduct(item);
     const button: ElementFinder = await product.$(".titleBottom > .tileAdd");
-    console.log(button);
     await browser.wait(ExpectedConditions.elementToBeClickable(button), 5000);
     await button.click();
   }
