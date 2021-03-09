@@ -53,7 +53,7 @@ export const config: Config = {
   specs: ["../test/ui/**/*.js"],
   getPageTimeout: 30000,
   SELENIUM_PROMISE_MANAGER: false,
-  // seleniumAddress: "http://0.0.0.0:4444",
+  seleniumAddress: "http://0.0.0.0:4444",
   onPrepare: () => {
     browser.ignoreSynchronization = true;
   },

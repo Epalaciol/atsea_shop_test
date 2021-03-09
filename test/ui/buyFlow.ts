@@ -2,8 +2,7 @@ import { browser } from "protractor";
 import {
   ProductListPage,
   MenuContentPage,
-  UserPage,
-  SuccessPage,
+  SignInUserPage,
 } from "../../src/page";
 const chai = require("chai");
 const { expect } = chai;
@@ -11,7 +10,7 @@ const { expect } = chai;
 describe("Let's buy something", () => {
   const menuContent: MenuContentPage = new MenuContentPage();
   beforeEach(async () => {
-    await browser.get("http://localhost:8080");
+    await browser.get("http://172.19.48.1:8080");
   });
 
   describe("add items to the car", () => {
@@ -19,19 +18,17 @@ describe("Let's buy something", () => {
     beforeEach(async () => {
       await productList.selectProduct("Unusable Security");
     });
-    describe("let's create an user", () => {
-      const userPage: UserPage = new UserPage();
-      const successPage: SuccessPage = new SuccessPage();
+    describe("let's sign In", () => {
+      const singInUser: SignInUserPage = new SignInUserPage();
       beforeEach(async () => {
-        await menuContent.clickCreateUser();
+        await menuContent.clickSignIn();
         await browser.sleep(3000);
-        await userPage.setUsername("daniela");
-        await userPage.setPassword("12345");
-        await userPage.signIn();
+        await singInUser.setUsername("daniela");
+        await singInUser.setPassword("12345");
+        await singInUser.signUp();
       });
-      it("go to create an user", async () => {
+      it("then is login", async () => {
         await browser.sleep(3000);
-        await successPage.success();
         expect(await menuContent.getNumberItems()).to.equal("1");
       });
     });

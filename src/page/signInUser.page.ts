@@ -1,23 +1,25 @@
 import { $, ElementFinder } from "protractor";
 
-export class UserPage {
+export class SignInUserPage {
   private username: ElementFinder;
   private password: ElementFinder;
-  private signInButton: ElementFinder;
+  private signinButton: ElementFinder;
 
   constructor() {
     this.username = $("input[name='username']");
     this.password = $("input[name='password']");
-    this.signInButton = $(".createFormButton > button");
+    this.signinButton = $(".loginFormButton > button");
   }
 
   public async setUsername(username: string): Promise<void> {
-    await this.username.sendKeys(username);
+    await this.username.sendKeys(username[0]);
+    await this.username.sendKeys(username.slice(1));
   }
   public async setPassword(password: string): Promise<void> {
+    await this.password.click();
     await this.password.sendKeys(password);
   }
-  public async signIn(): Promise<void> {
-    await this.signInButton.click();
+  public async signUp(): Promise<void> {
+    await this.signinButton.click();
   }
 }
