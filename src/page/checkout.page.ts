@@ -64,4 +64,8 @@ export class CheckoutPage {
   public async completeOrden(): Promise<void> {
     await this.compleOrdenButton.click();
   }
+  public async getErrorMessage(): Promise<string> {
+    const err = await $(".loginErrorMessage");
+    return err.getText();
+  }
 }
