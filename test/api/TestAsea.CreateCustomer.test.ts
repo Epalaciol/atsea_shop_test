@@ -1,4 +1,4 @@
-import { post, get, put } from 'superagent';
+import { post, get, put, del } from 'superagent';
 import { StatusCodes } from 'http-status-codes';
 import * as chai from 'chai';
 
@@ -17,10 +17,9 @@ const new_user = {
   "enabled": "true",
   "role": "USER"
 };
-describe('Create a new customer', () => {
-
+describe('Create a new customer (POST)', () => {
   
-  it('Create new user using POST service', async () => {
+  it('Create new customer using POST service', async () => {
     const response = await post(`${url_base}/api/customer/`)
       .set('User-Agent', 'agent')
       .send(new_user);
@@ -62,7 +61,7 @@ describe('Create a new customer', () => {
   });
 });
 
-describe ('Get Customer ', () => {
+describe ('Get Customer (GET)', () => {
   it('Request customer by id', async () => {
     const response = await get(`${url_base}/api/customer/${id_customer_created}`)
       .set('User-Agent', 'agent')
@@ -94,7 +93,7 @@ describe ('Get Customer ', () => {
   });
 
 });
-describe('Update Customer', () => {
+describe('Update Customer (PUT)', () => {
   const updated_user = {
     "customerId": 5,
     "name": "Modificado",
@@ -106,7 +105,7 @@ describe('Update Customer', () => {
     "enabled": "true",
     "role": "USER"
   };
-  it( 'Update an existing user', async ()=> {
+  it( 'Update an existing customer', async ()=> {
     const response = await put(`${url_base}/api/customer/${id_customer_created}` )
       .set('User-Agent', 'agent')
       .send(updated_user);
@@ -115,7 +114,7 @@ describe('Update Customer', () => {
     expect(response.body.name).to.equal(updated_user.name);
     expect(response.body.email).to.equal(updated_user.email);
   });
-  it('Update an unexisting user', async ()=> {
+  it('Update an unexisting customer', async ()=> {
     await put(`${url_base}/api/customer/${id_customer_created*1000}` )
       .set('User-Agent', 'agent')
       .send(updated_user)
@@ -124,4 +123,28 @@ describe('Update Customer', () => {
       });
 
   });
+});
+describe('Delete Customer (DELETE)', () => {
+
+  it('Delete an existing customer', async () => {
+    const response = await del(`${url_base}/api/customer/${id_customer_created}`)
+      .set('User-Agent', 'Agent');
+    
+    expect(response.status).to.equal(StatusCodes.NO_CONTENT);
+    });
+  it('Delete an unexisting customer', async ()=> {
+    await del(`${url_base}/api/customer/${id_customer_created*1000}` )
+      .set('User-Agent', 'agent')
+      .catch(error =>{
+        expect(error.status).to.equal(StatusCodes.NOT_FOUND);
+      });
+  });
+  it('Delete all customer', async () => {
+    const response = await del(`${url_base}/api/customer/`)
+      .set('User-Agent', 'Agent');
+    
+    expect(response.status).to.equal(StatusCodes.NO_CONTENT);
+    });
+
+  
 });
