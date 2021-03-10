@@ -25,7 +25,6 @@ const chromeConfig = {
       "--no-default-browser-check",
       "--window-size=1200,800",
     ],
-    prefs: { credentials_enable_service: false },
   },
 };
 

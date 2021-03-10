@@ -6,7 +6,7 @@ const { expect } = chai;
 describe("try to but no items", () => {
   const menuContent: MenuContentPage = new MenuContentPage();
   before(async () => {
-    await browser.get("http://172.19.48.1:8080");
+    await browser.get("http://192.168.56.1:8080");
   });
   describe("let's checkout", () => {
     const checkout: CheckoutPage = new CheckoutPage();

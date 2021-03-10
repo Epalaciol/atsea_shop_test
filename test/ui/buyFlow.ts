@@ -13,7 +13,7 @@ describe("Let's buy something", () => {
   const menuContent: MenuContentPage = new MenuContentPage();
   const success: SuccessPage = new SuccessPage();
   beforeEach(async () => {
-    await browser.get("http://172.19.48.1:8080");
+    await browser.get("http://192.168.56.1:8080");
   });
 
   describe("add items to the car", () => {
@@ -26,7 +26,7 @@ describe("Let's buy something", () => {
       beforeEach(async () => {
         await menuContent.clickSignIn();
         await browser.sleep(3000);
-        await singInUser.setUsername("d");
+        await singInUser.setUsername("p");
         await singInUser.setPassword("1");
         await singInUser.signUp();
       });
@@ -34,6 +34,7 @@ describe("Let's buy something", () => {
       describe("let's checkout", () => {
         const checkout: CheckoutPage = new CheckoutPage();
         beforeEach(async () => {
+          await browser.sleep(2000);
           await menuContent.clickCheckout();
           await checkout.setFirstName("daniela");
           await checkout.setLastName("higuita");

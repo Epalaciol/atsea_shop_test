@@ -6,7 +6,7 @@ const { expect } = chai;
 describe("try to but without login", () => {
   const menuContent: MenuContentPage = new MenuContentPage();
   beforeEach(async () => {
-    await browser.get("http://172.19.48.1:8080");
+    await browser.get("http://192.168.56.1:8080");
   });
   describe("first buy something", () => {
     const products: ProductListPage = new ProductListPage();
