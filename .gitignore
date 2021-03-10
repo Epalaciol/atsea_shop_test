@@ -154,4 +154,5 @@ $RECYCLE.BIN/
 
 mochawesome-report
 dist
+mochawesome-reports
 # End of https://www.toptal.com/developers/gitignore/api/windows,node,visualstudiocode
