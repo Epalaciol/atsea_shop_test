@@ -26,8 +26,8 @@ describe("Let's buy something", () => {
       beforeEach(async () => {
         await menuContent.clickSignIn();
         await browser.sleep(3000);
-        await singInUser.setUsername("daniela");
-        await singInUser.setPassword("12345");
+        await singInUser.setUsername("d");
+        await singInUser.setPassword("1");
         await singInUser.signUp();
       });
 
@@ -46,7 +46,7 @@ describe("Let's buy something", () => {
           await checkout.setCity("Gwenborough");
           await checkout.completeOrden();
         });
-        it("then this its the end", async () => {
+        it("then you buy something", async () => {
           expect(await success.getSuccessMessage()).to.equal(
             "You have successfully placed an order!"
           );

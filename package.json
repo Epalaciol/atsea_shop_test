@@ -6,6 +6,7 @@
     "scripts": {
         "test:api": "npm run build && mocha -t 5000 --reporter mochawesome --recursive ./dist/test/api/*.js",
         "test:ui": "npm run build && protractor dist/protractor/local.config.js",
+        "test:chrome": "npm run build && protractor dist/protractor/chrome.config.js",
         "clean": "rm -rf dist && rm -rf mochawesome-report && rm -rf mochawesome-reports",
         "build": "npm run clean && tsc"
     },

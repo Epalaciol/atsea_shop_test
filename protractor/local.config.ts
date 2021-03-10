@@ -23,7 +23,7 @@ const chromeConfig = {
     args: [
       "--disable-popup-blocking",
       "--no-default-browser-check",
-      "--window-size=800,600",
+      "--window-size=1200,800",
     ],
     prefs: { credentials_enable_service: false },
   },
@@ -35,7 +35,7 @@ export const config: Config = {
   multiCapabilities,
   framework: "mocha",
   mochaOpts: {
-    timeout: 600000,
+    timeout: 120000,
     reporter: "mochawesome-screenshots",
     reporterOptions: {
       reportName: "report" + new Date().getTime(),
@@ -44,7 +44,7 @@ export const config: Config = {
     },
   },
   specs: ["../test/ui/**/*.js"],
-  getPageTimeout: 30000,
+  getPageTimeout: 20000,
   SELENIUM_PROMISE_MANAGER: false,
   seleniumAddress: "http://0.0.0.0:4444",
   onPrepare: () => {

@@ -1,4 +1,4 @@
-import { $, ElementFinder } from "protractor";
+import { $, ElementFinder, ExpectedConditions, browser } from "protractor";
 
 export class SuccessPage {
   private successButton: ElementFinder;
@@ -13,6 +13,10 @@ export class SuccessPage {
     await this.successButton.click();
   }
   public async getSuccessMessage(): Promise<string> {
+    await browser.wait(
+      ExpectedConditions.presenceOf(this.successMessage),
+      5000
+    );
     return await this.successMessage.getText();
   }
 }

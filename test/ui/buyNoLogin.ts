@@ -26,9 +26,9 @@ describe("try to but without login", () => {
         await checkout.setTitle("junior");
         await checkout.setAddress("Kulas Light, Apt. 556");
         await checkout.setCity("Gwenborough");
-        await checkout.completeOrden();
       });
       it("you can't continue", async () => {
+        await checkout.completeOrden();
         expect(await checkout.getErrorMessage()).to.equal(
           "Please login before completing order..."
         );
