@@ -152,7 +152,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-
-
+mochawesome-report
 dist
 # End of https://www.toptal.com/developers/gitignore/api/windows,node,visualstudiocode
