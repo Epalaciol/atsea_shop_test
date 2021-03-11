@@ -4,7 +4,7 @@ on:
   schedule:
   - cron : '5 0 * * *'
 	repository_dispatch:
-    types: [deployed]
+    types: "deployed"
   workflow_dispatch:
 jobs:
   api:
