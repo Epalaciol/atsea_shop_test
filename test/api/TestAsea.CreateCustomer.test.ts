@@ -4,7 +4,7 @@ import * as chai from "chai";
 
 const expect = chai.expect;
 
-const url_base = "http://3.128.131.98:8080/index.html#/?_k=xrptyg";
+const url_base = "http://3.128.131.98:8080";
 var id_customer_created;
 const new_user = {
   customerId: 5,
