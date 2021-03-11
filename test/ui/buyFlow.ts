@@ -13,7 +13,7 @@ describe("Let's buy something", () => {
   const menuContent: MenuContentPage = new MenuContentPage();
   const success: SuccessPage = new SuccessPage();
   beforeEach(async () => {
-    await browser.get("http://192.168.56.1:8080");
+    await browser.get("http://3.128.131.98:8080/index.html#/?_k=xrptyg");
   });
 
   describe("add items to the car", () => {
