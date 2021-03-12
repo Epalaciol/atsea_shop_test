@@ -60,7 +60,10 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
-      - run: npm install
+
+      - name: Run npm install
+        run: npm install
+
       - name: Run docker compose for selenium
         run: docker-compose up -d
 
@@ -68,17 +71,8 @@ jobs:
         run: |
           curl --request POST \
           --url http://3.128.131.98:8080/api/customer/ \
-          --data '{
-            customerId: 10,
-            name: "p",
-            address: " Medellin/antioqua",
-            email: "test@test.com",
-            phone: "000 000 000",
-            username: "test3",
-            password: "1",
-            enabled: "true",
-            role: "USER",
-          }'
+          --header 'Content-Type: application/json' \
+          --data '{"customerId": 10,"name": "pepe","address": " Medellin/antioqua","email": "test@test.com","phone": "000 000 000","username": "p","password": "1","enabled": "true","role": "USER"}'
 
       - name: Running UI tests
         run: npm run test:ui
@@ -89,4 +83,4 @@ jobs:
       - name: Delete test-user
         run: |
           curl --request DELETE \
-          --url http://3.128.131.98:8080/api/customer/
+          --url http://3.128.131.98:8080/api/customer/pepe
