@@ -2,7 +2,7 @@ name: tests
 
 on:
   schedule:
-    - cron: 5 0 * * *
+    - cron: 0 0 * * *
   repository_dispatch:
     types: [deployed]
   workflow_dispatch:
@@ -35,4 +35,54 @@ jobs:
         run: npm run test:api
       - name: Upload reports to AWS bucket
         run: aws s3 sync ./mochawesome-report ${{ secrets.AWS_BUCKET }}/api-tests-report
+        if: ${{ always() }}
+  # ui test
+  ui:
+    name: UI test
+    runs-on: ubuntu-latest
+
+    env:
+      DEFAULT_BRANCH: master
+      AWS_REGION: us-east-2
+
+    steps:
+      - name: Checkout to branch ${{ env.DEFAULT_BRANCH }}
+        uses: actions/checkout@v2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Run docker compose for selenium
+      - run: docker-compose up -d
+
+      - name: Create test-user
+        run: |
+          
+            curl --request POST \
+          --url http://localhost:8080/api/customer/ \
+          --data '{
+            customerId: 10,
+            name: "p",
+            address: " Medellin/antioqua",
+            email: "test@test.com",
+            phone: "000 000 000",
+            username: "test3",
+            password: "1",
+            enabled: "true",
+            role: "USER",
+          }'
+
+      - name: Running UI tests
+        run: npm run test:ui
+
+      - name: Delete test-user
+        run: |
+          
+            curl --request DELETE \
+          --url http://localhost:8080/api/customer/
+
+      - name: Upload reports to AWS bucket
+        run: aws s3 sync ./mochawesome-reports ${{ secrets.AWS_BUCKET }}/ui-test-reports
         if: ${{ always() }}
