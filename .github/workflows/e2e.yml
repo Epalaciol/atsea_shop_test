@@ -61,7 +61,7 @@ jobs:
         run: |
           
             curl --request POST \
-          --url http://localhost:8080/api/customer/ \
+          --url http://3.128.131.98:8080/api/customer/ \
           --data '{
             customerId: 10,
             name: "p",
@@ -81,7 +81,7 @@ jobs:
         run: |
           
             curl --request DELETE \
-          --url http://localhost:8080/api/customer/
+          --url http://3.128.131.98:8080/api/customer/
 
       - name: Upload reports to AWS bucket
         run: aws s3 sync ./mochawesome-reports ${{ secrets.AWS_BUCKET }}/ui-test-reports
