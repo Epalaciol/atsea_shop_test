@@ -44,16 +44,23 @@ jobs:
     env:
       DEFAULT_BRANCH: master
       AWS_REGION: us-east-2
+      NODE_VERSION: 14.x
 
     steps:
       - name: Checkout to branch ${{ env.DEFAULT_BRANCH }}
         uses: actions/checkout@v2
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
+      - run: npm install
       - name: Run docker compose for selenium
         run: docker-compose up -d
 
@@ -76,11 +83,10 @@ jobs:
       - name: Running UI tests
         run: npm run test:ui
 
+      - name: Upload reports to AWS bucket
+        run: aws s3 sync ./mochawesome-reports ${{ secrets.AWS_BUCKET }}/ui-test-reports
+        if: ${{ always() }}
       - name: Delete test-user
         run: |
           curl --request DELETE \
           --url http://3.128.131.98:8080/api/customer/
-
-      - name: Upload reports to AWS bucket
-        run: aws s3 sync ./mochawesome-reports ${{ secrets.AWS_BUCKET }}/ui-test-reports
-        if: ${{ always() }}
