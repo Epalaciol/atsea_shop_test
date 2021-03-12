@@ -55,7 +55,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
       - name: Run docker compose for selenium
-      - run: docker-compose up -d
+        run: docker-compose up -d
 
       - name: Create test-user
         run: |
