@@ -59,8 +59,7 @@ jobs:
 
       - name: Create test-user
         run: |
-          
-            curl --request POST \
+          curl --request POST \
           --url http://3.128.131.98:8080/api/customer/ \
           --data '{
             customerId: 10,
@@ -79,8 +78,7 @@ jobs:
 
       - name: Delete test-user
         run: |
-          
-            curl --request DELETE \
+          curl --request DELETE \
           --url http://3.128.131.98:8080/api/customer/
 
       - name: Upload reports to AWS bucket
