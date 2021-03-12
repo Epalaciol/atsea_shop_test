@@ -1,4 +1,4 @@
-import { $, ElementFinder } from "protractor";
+import { $, browser, ElementFinder, ExpectedConditions } from "protractor";
 
 export class CheckoutPage {
   private firstName: ElementFinder;
@@ -66,7 +66,7 @@ export class CheckoutPage {
   }
   public async getErrorMessage(): Promise<string> {
     const err = $(".loginErrorMessage");
-
+    await browser.wait(ExpectedConditions.presenceOf(err), 5000);
     return err.getText();
   }
 }
