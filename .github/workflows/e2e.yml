@@ -83,4 +83,4 @@ jobs:
       - name: Delete test-user
         run: |
           curl --request DELETE \
-          --url http://3.128.131.98:8080/api/customer/pepe
+          --url http://3.128.131.98:8080/api/customer/
