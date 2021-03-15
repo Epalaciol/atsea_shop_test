@@ -1,4 +1,11 @@
-# atsea_shop_test
+# **HOMEWORK 6 S.A.P Perficient Latam**
+
+Team Members in this assigment:
+
+- [Daniela Higuita Alcaraz](https://github.com/Daniela-git)
+- Esteban Palacio Londoño
+ 
+## atsea_shop_test
 
 Desarrollo de la logica para los test e2e y API's del repo [atsea-shop Daniela y Esteban](https://github.com/Daniela-git/atsea-sample-shop-app)
 
