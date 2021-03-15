@@ -49,7 +49,7 @@ jobs:
         run: npm run test:ui
 
       - name: Upload reports to AWS bucket
-        run: aws s3 sync ./mochawesome-reports ${{ secrets.AWS_BUCKET }}ui-test-reports/
+        run: aws s3 sync ./mochawesome-reports ${{ secrets.AWS_BUCKET }}ui-test-reports/ --acl public-read
         if: ${{ always() }}
       - name: Delete test-user
         run: |
@@ -84,5 +84,5 @@ jobs:
       - name: Running API tests
         run: npm run test:api
       - name: Upload reports to AWS bucket
-        run: aws s3 sync ./mochawesome-report ${{ secrets.AWS_BUCKET }}api-tests-report
+        run: aws s3 sync ./mochawesome-report ${{ secrets.AWS_BUCKET }}api-tests-report/ --acl public-read
         if: ${{ always() }}
